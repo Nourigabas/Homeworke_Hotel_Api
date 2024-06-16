@@ -10,7 +10,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Warning()
+            .MinimumLevel.Error()
             .WriteTo.File("D:\\HomeworkApi.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
