@@ -25,6 +25,9 @@ namespace Homeworke_Hotel_Api.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        //دالة جلب جميع الغرف
+        //WithOut
+        //تم وضعه من اجل ارجاع الغرف بدون الحجوزات الخاصة بكل غرفة
         public ActionResult<List<Room>> GetRooms([FromHeader]bool WithOut = true)
         {
             var respone = Room.GetRooms();
@@ -32,6 +35,7 @@ namespace Homeworke_Hotel_Api.Controllers
                 return NotFound();
             return WithOut ? Ok(mapper.Map<List<RoomWithOutBookings>>(respone)) : Ok(respone);
         }
+        //دالة جلب الغرفة ذات الرقم الفلاني 
         [HttpGet("{RoomId}", Name = "GetRoom")]
         public ActionResult<Room> GetRoom([FromRoute]int RoomId, [FromHeader] bool WithOut = true)
         {
@@ -40,6 +44,11 @@ namespace Homeworke_Hotel_Api.Controllers
                 return NotFound();
             return WithOut ? Ok(mapper.Map<RoomWithOutBookings>(respone)) : Ok(respone);
         }
+        //حذف الغرفة 
+        //تم التعامل معها عبر 
+        //isdelet 
+        //لتبيقى معلوماتها محفوظة في 
+        //database
         [HttpDelete("{RoomId}")]
         public ActionResult DeletRoom([FromRoute]int RoomId)
         {
@@ -49,6 +58,8 @@ namespace Homeworke_Hotel_Api.Controllers
             Room.DeletRoom(RoomId);
             return Ok();
         }
+
+        //دالة انشاء - اضافة غرفة
         [HttpPost]
         public ActionResult<Room> CreateRoom([FromBody]RoomForCreate room)
         {
@@ -57,7 +68,7 @@ namespace Homeworke_Hotel_Api.Controllers
             var RoomForCreateWithOut = mapper.Map<RoomWithOutBookings>(RoomForCreate);
             return CreatedAtRoute("GetEmployee", new { RoomId = RoomForCreate.Id }, RoomForCreateWithOut);
         }
-
+        //التعديل على معلومات غرفة ما ذات الرقم الفلاني
         [HttpPatch]
         public ActionResult<Room> UpdateRoom([FromHeader] int RoomId, [FromBody] JsonPatchDocument<RoomForUpdate>  PatchDocument)
         {
