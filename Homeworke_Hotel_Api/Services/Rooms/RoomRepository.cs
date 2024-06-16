@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Homeworke_Hotel_Api.Services
 {
+    //تم انشاء هذا الكلاس من اجل تصميم الدوال اللازمة في كل عملية من عمليات 
+    //comtroller 
+    //الخاص بها 
     public class RoomRepository : IRoomRepository
     {
         private readonly DataBaseContext context;
@@ -18,6 +21,7 @@ namespace Homeworke_Hotel_Api.Services
             this.context = context;
             this.mapper = mapper;
         }
+        //دالة جلب الغرف جميعها مضمنة للحجوزات الخاصة بكل غرفة 
         public List<Room> GetRooms()
         {
             var respone = context.Rooms
@@ -25,7 +29,8 @@ namespace Homeworke_Hotel_Api.Services
                                  .Include(e=>e.Bookings)
                                  .ToList();
             return respone;
-        }
+        }        
+        //دالة جلب الغرفة ذات الرقم الفلاني مضمنة للحجوزات الخاصة بكل غرفة 
         public Room GetRoom(int RoomId)
         {
             var respone = context.Rooms
@@ -34,18 +39,20 @@ namespace Homeworke_Hotel_Api.Services
                                  .FirstOrDefault();
             return respone;
         }
+        //دالة حذف غرفة ما 
         public void DeletRoom(int RoomId)
         {
             var respone =  context.Rooms.FirstOrDefault(e => e.Id == RoomId);
             respone.IsDeleted = true;
             context.SaveChanges();
         }
+        //دالة انشاء غرفة
         public void CreateRoom(Room room)
         {
              context.Rooms.Add(room);
              context.SaveChanges();
         }
-
+        //دالة التعديل على بيانات غرفة ما ذات الرقم الفلاني 
         public void UpdateRoom(int RoomId, JsonPatchDocument<RoomForUpdate> PatchDocument)
         {
             var Room = context.Rooms.FirstOrDefault(e => e.Id == RoomId);

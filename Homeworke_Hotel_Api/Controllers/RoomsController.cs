@@ -42,6 +42,9 @@ namespace Homeworke_Hotel_Api.Controllers
             var respone = Room.GetRoom(RoomId);
             if (respone == null)
                 return NotFound();
+            //فحص اذا ما كان المستخدم يريد اعادة الغرفة مع الحجوزات ام لا وارجاعه كما يريد
+            //يتم الفحص عبر المتحول 
+            //WithOut
             return WithOut ? Ok(mapper.Map<RoomWithOutBookings>(respone)) : Ok(respone);
         }
         //حذف الغرفة 
@@ -65,6 +68,7 @@ namespace Homeworke_Hotel_Api.Controllers
         {
             var RoomForCreate = mapper.Map<Room>(room);
             Room.CreateRoom(RoomForCreate);
+            //تمت اضافة السطر البرمجي التالي من اجل ارجاع الغرفة بدون الحجوزات بعد الاضافة 
             var RoomForCreateWithOut = mapper.Map<RoomWithOutBookings>(RoomForCreate);
             return CreatedAtRoute("GetEmployee", new { RoomId = RoomForCreate.Id }, RoomForCreateWithOut);
         }

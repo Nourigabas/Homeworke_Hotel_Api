@@ -5,6 +5,7 @@ namespace Homeworke_Hotel_Api.ViewModels.Room
 {
     public class RoomForCreate
     {
+        //تم انشاء هذا الكلاس من اجل ادخال البيانات الاولية اللازمة من اجل عملية انشاء غرفة 
         public int Number { get; set; }
         public int FloorNumber { get; set; }
         [Required(ErrorMessage = "Don't forget to input HotelId")]

@@ -45,6 +45,7 @@ namespace Homeworke_Hotel_Api.Data
             modelBuilder.Entity<Room>()
                         .Property(r => r.Status)
                         .IsRequired();
+            //اضافة بيانات اولية الى قاعدة البيانات 
             modelBuilder.Entity<Hotel>().HasData(new Hotel
             {
                 Id = 1,

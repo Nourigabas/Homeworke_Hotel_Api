@@ -8,12 +8,28 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
 
+
+
+//بداية تم شرح التعليقات السطرية على الغرفة من كل شي 
+//مثل 
+//1 - كيف تم انشاء 
+//    controller 
+//2- كيف تم انشاء الدوال الخاصة 
+//3- .....4-......
+//تم شرحها جميعها على 
+//Room
+
+
+//create logger in textfild
 var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Error()
             .WriteTo.File("D:\\HomeworkApi.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
+
+//فحص 
+//token
 builder.Services.AddAuthentication()
     .AddJwtBearer(options =>
     {
@@ -28,23 +44,37 @@ builder.Services.AddAuthentication()
         };
     });
 
-
+//اللغات 
+//xml   -    json
 builder.Services.AddControllers(option => option.ReturnHttpNotAcceptable = true)
                 .AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
 
+//حقن 
+//mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+//حثن مكتبة 
+//serilog
+//for logger
 builder.Host.UseSerilog();
 
+
+//الاتصال مع قاعدة البيانات 
 builder.Services.AddDbContext<DataBaseContext>(option =>
           option.UseSqlServer(builder.Configuration["ConnectionStrings:HotelDBConnection"]));
-
+//جعل المتحول الذي يتم انشاءه من كلاس قاعدة البيانات عام لكل المشروع
 builder.Services.AddScoped<DataBaseContext>();
 
+
+//عندما يتم طلب 
+//IHotelRepository
+//يتم تحويل الطلب ل 
+//HotelRepository
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IBookingsRepository, BookingsRepository>();
@@ -58,6 +88,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//اضافة استخدام فحص تسجيل الدخول
 app.UseAuthentication();
 
 app.UseHttpsRedirection();
