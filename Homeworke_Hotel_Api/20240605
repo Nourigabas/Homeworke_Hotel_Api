@@ -1,0 +1,25 @@
+2024-06-05 01:06:51.553 +03:00 [INF] Now listening on: https://localhost:7229
+2024-06-05 01:06:51.597 +03:00 [INF] Now listening on: http://localhost:5177
+2024-06-05 01:06:51.599 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-05 01:06:51.599 +03:00 [INF] Hosting environment: Development
+2024-06-05 01:06:51.599 +03:00 [INF] Content root path: C:\Users\Nouri\OneDrive\سطح المكتب\Medad - مداد\Homeworke_Hotel_Api\Homeworke_Hotel_Api
+2024-06-05 01:06:54.954 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7229/swagger/index.html - null null
+2024-06-05 01:06:55.569 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7229/swagger/index.html - 200 null text/html;charset=utf-8 632.3408ms
+2024-06-05 01:06:56.395 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7229/_framework/aspnetcore-browser-refresh.js - null null
+2024-06-05 01:06:56.402 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7229/_vs/browserLink - null null
+2024-06-05 01:06:56.420 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7229/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 24.0649ms
+2024-06-05 01:06:56.579 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7229/_vs/browserLink - 200 null text/javascript; charset=UTF-8 177.2119ms
+2024-06-05 01:06:56.846 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7229/swagger/v1/swagger.json - null null
+2024-06-05 01:06:57.173 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7229/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 327.6437ms
+2024-06-05 01:07:03.177 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7229/api/Hotels - null null
+2024-06-05 01:07:03.190 +03:00 [INF] Executing endpoint 'Homeworke_Hotel_Api.Controllers.HotelsController.GetHotels (Homeworke_Hotel_Api)'
+2024-06-05 01:07:03.227 +03:00 [INF] Route matched with {action = "GetHotels", controller = "Hotels"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[Homeworke_Hotel_Api.Models.Hotel]]] GetHotels() on controller Homeworke_Hotel_Api.Controllers.HotelsController (Homeworke_Hotel_Api).
+2024-06-05 01:07:22.087 +03:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Booking'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-05 01:07:27.804 +03:00 [INF] Executed DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [h].[Id], [h].[Address], [h].[Email], [h].[IsDeleted], [h].[Name], [h].[Phone]
+FROM [Hotels] AS [h]
+WHERE [h].[IsDeleted] = CAST(0 AS bit)
+2024-06-05 01:07:45.956 +03:00 [WRN] No output formatter was found for content types '["text/plain"]' to write the response.
+2024-06-05 01:07:45.965 +03:00 [INF] Executed action Homeworke_Hotel_Api.Controllers.HotelsController.GetHotels (Homeworke_Hotel_Api) in 42732.1651ms
+2024-06-05 01:07:45.967 +03:00 [INF] Executed endpoint 'Homeworke_Hotel_Api.Controllers.HotelsController.GetHotels (Homeworke_Hotel_Api)'
+2024-06-05 01:07:45.987 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7229/api/Hotels - 406 0 null 42808.8265ms
