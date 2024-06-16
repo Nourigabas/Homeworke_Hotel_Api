@@ -22,6 +22,8 @@ namespace Homeworke_Hotel_Api.Controllers
             this.configuration = configuration;
 
         }
+        //فحص معلومات المستخدم وجلب
+        //token
         [HttpPost("Authentication")]
         public ActionResult<string> LoginAccount([FromBody]AuthRequest Request)
         {
