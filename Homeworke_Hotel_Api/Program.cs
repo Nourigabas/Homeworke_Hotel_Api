@@ -5,6 +5,7 @@ using Homeworke_Hotel_Api.Services.Guests;
 using Homeworke_Hotel_Api.Services.Hotels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Serilog;
 using System.Text;
 
@@ -26,6 +27,16 @@ Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Error()
             .WriteTo.File("D:\\HomeworkApi.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
+//تم وضع هذه التعليمة لتجاهل الحلقات المرجعية عند تسلسل الكائنات 
+//اي اذا كان لدي فندق يحتوي على العديد من الموظفين 
+//والموظف يحتوي على رقم الفندق الذي يعمل به 
+// هكذا ستصبح حلقة لا لجلب البيانات 
+//لذلك تم استخدام هذه التعليمة 
+builder.Services.AddControllers()
+       .AddNewtonsoftJson(options =>
+       {
+           options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+       });
 
 
 //فحص 
