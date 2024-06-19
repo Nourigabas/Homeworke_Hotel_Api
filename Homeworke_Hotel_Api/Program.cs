@@ -59,13 +59,13 @@ builder.Services.AddControllers(option => option.ReturnHttpNotAcceptable = true)
                     //تم وضع هذه التعليمة لتجاهل الحلقات المرجعية عند تسلسل الكائنات 
                     //اي اذا كان لدي فندق يحتوي على العديد من الموظفين 
                     //والموظف يحتوي على رقم الفندق الذي يعمل به 
-                    // هكذا ستصبح حلقة لا لجلب البيانات 
+                    // هكذا ستصبح حلقة لانهائية لجلب البيانات 
                     //لذلك تم استخدام هذه التعليمة 
                     option.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 })
                 .AddXmlDataContractSerializerFormatters();
 
-//حقن 
+//تسجيل
 //mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -73,7 +73,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-//حثن مكتبة 
+//تسجيل مكتبة 
 //serilog
 //for logger
 builder.Host.UseSerilog();

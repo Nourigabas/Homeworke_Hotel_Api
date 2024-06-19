@@ -8,8 +8,8 @@ namespace Homeworke_Hotel_Api.Services
     public interface IEmployeeRepository
     {
         public List<Employee> GetEmployees();
-        public Employee GetEmployee(int BookingId);
-        public void DeletEmployee(int BookingId); 
+        public Employee GetEmployee(int EmployeeId);
+        public void DeletEmployee(int EmployeeId); 
         public void CreateEmployye(Employee Employee);
         public void UpdateEmployee(int employeeId, JsonPatchDocument<EmployeeForUpdate> patchDocument);
     }

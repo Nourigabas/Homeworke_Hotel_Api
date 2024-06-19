@@ -36,7 +36,7 @@ namespace Homeworke_Hotel_Api.Controllers
         }
         [AllowAnonymous]
         [HttpGet("{BookingId}", Name = "GetBooking")]
-        public ActionResult<Booking> GetBooking([FromQuery] int BookingId,[FromHeader] bool WithOut = true)
+        public ActionResult<Booking> GetBooking([FromRoute] int BookingId,[FromHeader] bool WithOut = true)
         {
             var respone = Booking.GetBooking(BookingId);
             if (respone == null)

@@ -28,10 +28,10 @@ namespace Homeworke_Hotel_Api.Services
                                  .ToList();
             return respone;
         }
-        public Employee GetEmployee(int BookingId)
+        public Employee GetEmployee(int EmployeeId)
         {
             var respone = context.Employees
-                                 .Where(e => e.Id == BookingId && e.IsDeleted == false)
+                                 .Where(e => e.Id == EmployeeId && e.IsDeleted == false)
                                  .Include(e => e.Bookings)
                                  .FirstOrDefault();
             return respone;
@@ -42,9 +42,9 @@ namespace Homeworke_Hotel_Api.Services
             context.SaveChanges();
         }
 
-        public void DeletEmployee(int BookingId)
+        public void DeletEmployee(int EmployeeId)
         {
-            var respone =  context.Employees.FirstOrDefault(e => e.Id == BookingId);
+            var respone =  context.Employees.FirstOrDefault(e => e.Id == EmployeeId);
             respone.IsDeleted = true;
             context.SaveChanges();
 

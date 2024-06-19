@@ -25,6 +25,7 @@ namespace Homeworke_Hotel_Api.Controllers
             this.mapper = mapper;
         }
         [HttpGet]
+        [AllowAnonymous]
         //دالة جلب جميع الغرف
         //WithOut
         //تم وضعه من اجل ارجاع الغرف بدون الحجوزات الخاصة بكل غرفة
@@ -36,6 +37,7 @@ namespace Homeworke_Hotel_Api.Controllers
             return WithOut ? Ok(mapper.Map<List<RoomWithOutBookings>>(respone)) : Ok(respone);
         }
         //دالة جلب الغرفة ذات الرقم الفلاني 
+        [AllowAnonymous]
         [HttpGet("{RoomId}", Name = "GetRoom")]
         public ActionResult<Room> GetRoom([FromRoute]int RoomId, [FromHeader] bool WithOut = true)
         {
